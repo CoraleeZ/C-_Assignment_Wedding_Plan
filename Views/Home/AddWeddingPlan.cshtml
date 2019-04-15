@@ -1,0 +1,38 @@
+@model WeddingPlan
+<h1>Plan your Wedding!</h1>
+<a href="/logout">Log out!</a>&nbsp|&nbsp<a href="/dashboard">Dashboard</a>
+<br>
+<form asp-action="Process_newplan" asp-controller="Home" method="post">
+
+    <div class="form-group">
+    <div>
+    <span asp-validation-for="WedderOne" style="color:red;"></span>
+    </div>
+    Wedder One:<input type="text" asp-for="WedderOne">
+    </div>
+
+    <div class="form-group">
+    <div>
+    <span asp-validation-for="WedderTwo" style="color:red;"></span>
+    </div>
+    Wedder Two:<input type="text" asp-for="WedderTwo">
+    </div>
+
+    <div class="form-group">
+    <div>
+    <span asp-validation-for="Date" style="color:red;"></span>
+    </div>
+    Date:<input type="text" asp-for="Date" placeholder="mm/dd/yyyy">
+    </div>
+    
+    <div class="form-group">
+    <div>
+    <span asp-validation-for="Address" style="color:red;"></span>
+    </div>
+    Address:<input type="text" asp-for="Address" style="width:300px;" placeholder="AddressLine,City,State,PostalCode,Country">
+    </div>
+
+    <div class="form-group">
+    <input type="submit" value="Create">
+    </div>
+</form>

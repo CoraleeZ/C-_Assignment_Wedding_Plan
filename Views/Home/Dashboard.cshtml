@@ -1,0 +1,46 @@
+@model List<WeddingPlan>
+
+<h1>Welcome to the Wedding Planner</h1>
+<a href="/logout">Log out!</a>
+
+ <center>
+        <table class="table table-striped col-sm-10 border">
+
+            <thead>
+                <tr>
+                    <th class='border-left border-right' scope="col-2">Wedding</th>
+                    <th class='border-left border-right' scope="col-1">Date</th>
+                    <th class='border-left border-right' scope="col-1">Guest</th>
+                    <th class='border-left border-right' scope="col-1">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+              @foreach(var x in Model){
+
+                    <tr>   
+                        <td class='border-left border-right'>
+                            <a href="/detail/@x.WeddingPlanId">@x.WedderOne & @x.WedderTwo</a>
+                        </td>
+                        <td class='border-left border-right'>@x.Date</td>
+                        <td class='border-left border-right'>@x.Guests.Count</td> 
+                
+                        <td class='border-left border-right'>
+                        @if(x.UserId==@ViewBag.userid){
+                                <a href="/delete/@x.WeddingPlanId">Delete</a>
+                        }else{
+                            @if(x.Guests.Any(r=>r.UserId==@ViewBag.userid)){
+                                    <a href="/un-rsvp/@x.WeddingPlanId">Un-RSVP</a>
+                            }else{
+                                    <a href="/rsvp/@x.WeddingPlanId">RSVP</a>
+                            }
+                        }
+                        </td> 
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </center>
+    <button><a href="/new">New Wedding</a></button>

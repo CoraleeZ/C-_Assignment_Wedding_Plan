@@ -1,0 +1,24 @@
+@model Display_one_plan
+
+<h1>@Model.Oneplan.WedderOne and @Model.Oneplan.WedderTwo Wedding!</h1>
+<a href="/logout">Log out!</a>&nbsp|&nbsp<a href="/dashboard">Dashboard</a>
+<br>
+<p>Date: @Model.Oneplan.Date </p>
+<br>
+<p>Guest:</p>
+<div class="offset-sm-1">
+    @{
+        foreach(var x in @Model.Guest)
+        {
+            <p>@x.User.Firstname @x.User.Lastname</p>
+        }
+    }
+</div>
+<p id="address" style="display:none;" >@Model.Oneplan.Address</p>
+<div id="map" style="width:500px;height:380px;"></div>
+<script src="~/js/map.js" asp-append-version="true"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=KEY_OF_API&callback=initMap">
+    </script>
+  
+
